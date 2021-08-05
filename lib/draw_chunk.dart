@@ -4,13 +4,13 @@ import 'whiteboard_draw.dart';
 
 part 'draw_chunk.g.dart';
 
-@JsonSerializable(nullable: false, explicitToJson: true)
+@JsonSerializable(explicitToJson: true)
 class DrawChunk {
-  final int id;
+  final int? id;
 
-  final WhiteboardDraw draw;
+  final WhiteboardDraw? draw;
 
-  final DateTime createdAt;
+  final DateTime? createdAt;
 
   DrawChunk({this.id, this.draw, this.createdAt});
 
