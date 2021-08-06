@@ -28,7 +28,6 @@ abstract class WhiteboardController {
     if (draw!.getScaledSize(width, height) == this.draw!.getSize()) return;
     draw!.scale(width, height);
     streamController.add(draw!.copyWith());
-    // print("initializeSize: w=${width} height=${height}");
   }
 
   WhiteboardDraw? getDraw() => draw;
