@@ -124,6 +124,7 @@ class WhiteboardState extends State<Whiteboard> {
                       setState(() {});
                     },
                     child: StreamBuilder<WhiteboardDraw?>(
+                        initialData: widget.controller!.draw,
                         stream: widget.controller!.onChange(),
                         builder: (context, snapshot) {
                           var draw = snapshot.data;
