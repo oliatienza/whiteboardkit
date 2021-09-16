@@ -12,7 +12,7 @@ abstract class WhiteboardController {
   final streamController = StreamController<WhiteboardDraw?>.broadcast();
   final sizeChangedController = StreamController<Size>.broadcast();
 
-  WhiteboardDraw? draw;
+  WhiteboardDraw? _draw;
 
   final bool readonly;
   final bool toolbox;
@@ -25,12 +25,12 @@ abstract class WhiteboardController {
   });
 
   void initializeSize(double width, double height) {
-    if (draw!.getScaledSize(width, height) == this.draw!.getSize()) return;
-    draw!.scale(width, height);
-    streamController.add(draw!.copyWith());
+    if (_draw!.getScaledSize(width, height) == this._draw!.getSize()) return;
+    _draw!.scale(width, height);
+    streamController.add(_draw!.copyWith());
   }
 
-  WhiteboardDraw? getDraw() => draw;
+  WhiteboardDraw? getDraw() => _draw;
 
   Stream<WhiteboardDraw?> onChange() {
     return streamController.stream;
@@ -48,6 +48,14 @@ abstract class WhiteboardController {
   onPanUpdate(Offset position) {}
 
   onPanEnd() {}
+
+  WhiteboardDraw? get draw => _draw;
+  set draw(WhiteboardDraw? whiteboardDraw) {
+    if (whiteboardDraw == null) return;
+
+    _draw = whiteboardDraw;
+    streamController.add(_draw!.copyWith());
+  }
 }
 
 class PlayControls {
