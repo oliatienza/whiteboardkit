@@ -131,10 +131,10 @@ class WhiteboardState extends State<Whiteboard> {
 
                           return CustomPaint(
                             key: UniqueKey(),
-                            foregroundPainter: new SuperPainter(draw),
+                            foregroundPainter: SuperPainter(draw),
                             size: Size.infinite,
                             child: Container(
-                              color: Colors.white,
+                              color: widget.style.backgroundColor,
                             ),
                           );
                         }),
