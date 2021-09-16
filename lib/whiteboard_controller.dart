@@ -51,8 +51,6 @@ abstract class WhiteboardController {
 
   WhiteboardDraw? get draw => _draw;
   set draw(WhiteboardDraw? whiteboardDraw) {
-    if (whiteboardDraw == null) return;
-
     _draw = whiteboardDraw;
     streamController.add(_draw!.copyWith());
   }
